@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.3/angular.min.js"></script>
+    <title>Document</title>
+    <script>
+        myApp = angular.module("myApp", [])
+        myApp.controller("myCtrl", function($scope){
+            $scope.taskList = []
+            $scope.add_task = function(){
+                $scope.taskList.push($scope.taskText)
+            }
+            $scope.remove = function($index){
+                $scope.taskList.splice($index, 1)
+            }
+        })
+    </script>
+</head>
+<body ng-app="myApp" ng-controller="myCtrl">
+    <input type="text" name="" id="" ng-model="taskText">
+    <button ng-click="add_task()">Add Task</button>
+    <ol>
+        <li ng-repeat="task in taskList track by $index">
+            {{task}} <span ng-click="remove($index)" style="color: red;">[ Task Completed ]</span>
+        </li>
+    </ol>
+    
+</body>
+</html>

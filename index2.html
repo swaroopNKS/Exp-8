@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.3/angular.min.js"></script>
+    <script>
+        myApp = angular.module("myApp", [])
+        myApp.controller("myctrl", function($scope){
+            $scope.calculate = function(){
+                if($scope.operator == "+"){
+                    $scope.result = parseInt($scope.aValue) + parseInt($scope.bValue)
+                }
+                else if($scope.operator == "-"){
+                    $scope.result = parseInt($scope.aValue) - parseInt($scope.bValue)
+                }
+                else if($scope.operator == "*"){
+                    $scope.result = parseInt($scope.aValue) * parseInt($scope.bValue)
+                }
+                else if($scope.operator == "/"){
+                    $scope.result = parseInt($scope.aValue) / parseInt($scope.bValue)
+                }
+            }
+        })
+    </script>
+</head>
+<body ng-app="myApp" ng-controller="myctrl">
+    <h1>Simple Calculator</h1>
+    Enter the value of A : <input type="text" ng-model="aValue"> <br> <br>
+    Enter the value of B : <input type="text" ng-model="bValue"> <br> <br>
+    Choose the operation to perform : 
+    <select name="" id="" ng-model="operator" >
+        <option value="+" selected>+</option>
+        <option value="-">-</option>
+        <option value="*">x</option>
+        <option value="/">/</option>
+    </select>
+    <button ng-click="calculate()">Calculate</button>
+    <pre>  </pre><h1 style="display: inline;">Result is {{result}}</h1>
+    
+</body>
+</html>
